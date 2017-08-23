@@ -22,4 +22,26 @@ app.listen(port, () => {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger("dev"));
 
+app.get("/saxophones", (req, res) => {
+    Saxophones.find()
+        .then((foundSaxes) => {
+            if (!foundSaxes) {
+                return res.send({ msg: "no saxes found" });
+            }
+            res.send(foundSaxes);
+        })
+        .catch((err) => {
+            res.status(500).send(err);
+        })
+});
 
+app.post("/saxophones", (req, res) => {
+    let newSax = new Saxophones(req.body);
+    newSax.save()
+        .then(function (savedSaxophone) {
+            res.send(savedSaxophone);
+        })
+        .catch(function (err) {
+            res.status(500).send(err);
+        });
+});
