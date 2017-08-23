@@ -24,10 +24,8 @@ const SaxophoneSchema = ({
     setup: {
         mouthpiece: String,
         reed: String,
-        case: String
-    },
-    mute: {
-        type: Boolean,
+        case: String,
+        mute: Boolean
     }
 });
 
