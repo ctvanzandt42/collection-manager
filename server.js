@@ -45,3 +45,40 @@ app.post("/saxophones", (req, res) => {
             res.status(500).send(err);
         });
 });
+
+app.get("/saxophones/:id", (req, res) => {
+    Saxophones.findById(req.params.id)
+        .then((foundSax) => {
+            if (!foundSax) {
+                return res.send({ msg: "no saxes found" });
+            }
+            res.send(foundSax);
+        })
+        .catch((err) => {
+            res.status(500).send(err);
+        })
+});
+
+app.put("/saxophones/:id", (req, res) => {
+    Saxophones.findByIdAndUpdate(req.params.id, req.body)
+        .then((updatedSax) => {
+            if (!updatedSax) {
+                return res.send({ msg: "could not update sax" });
+            }
+            res.send(updatedSax);
+        })
+        .catch((err) => {
+            res.status(500).send(err);
+        })
+});
+
+app.delete("/saxophones/:id", (req, res) => {
+    Saxophones.findByIdAndRemove(req.params.id)
+        .then(function (message) {
+            console.log("Message: " + message);
+            res.send(message);
+        })
+        .catch((err) => {
+            res.status(500).send(err);
+        })
+});

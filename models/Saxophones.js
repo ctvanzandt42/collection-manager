@@ -15,7 +15,7 @@ const SaxophoneSchema = ({
     },
     condition: {
         type: String,
-        enum: ['needs an overhaul', 'playable', 'good', 'pristine']
+        enum: ['lamp', 'playable', 'good', 'pristine']
     },
     fSharpKey: {
         type: Boolean,
