@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bluebird = require('bluebird');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
+const mustache = require('mustache');
 const Saxophones = require('./models/Saxophones');
 mongoose.Promise = bluebird;
 const app = express();
@@ -19,8 +20,14 @@ app.listen(port, () => {
 });
 
 //installing some middleware
+app.use(express.static(path.join(__dirname, "./public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger("dev"));
+
+//setting up mustache
+app.engine("mustache", mustacheExpress());
+app.set("views", "./views");
+app.set("view engine", "mustache");
 
 app.get("/saxophones", (req, res) => {
     Saxophones.find()
