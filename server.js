@@ -39,17 +39,14 @@ app.get("/whoops", (req, res) => {
     res.render('whoops');
 });
 
-app.get("/directory", (req, res) => {
-    res.render('directory');
-});
-
 app.get("/saxophones", (req, res) => {
     Saxophones.find()
         .then((foundSaxes) => {
             if (!foundSaxes) {
                 return res.send({ msg: "no saxes found" });
             }
-            res.send(foundSaxes);
+            // res.send(foundSaxes);
+            res.render('directory', { saxophones: foundSaxes })
         })
         .catch((err) => {
             res.status(500).send(err);

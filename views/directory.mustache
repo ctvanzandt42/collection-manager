@@ -9,7 +9,11 @@
 </head>
 
 <body>
-    {{#saxophones}} {{model}} {{/saxophones}}
+    {{#saxophones}}
+    <div class="directory-container">
+        <div class="sax-container">{{model}}: {{manufacturer}}, {{yearAcquired}}, {{condition}}</div>
+    </div>
+    {{/saxophones}}
 </body>
 
 </html>
