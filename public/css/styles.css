@@ -1,4 +1,4 @@
-body {
+* {
     background-image: url(http://www.imgbase.info/images/safe-wallpapers/miscellaneous/funny/56035_funny_just_do_it_shia_labeouf.jpg);
     margin: 0 auto;
 }
@@ -49,4 +49,23 @@ body {
 
 .whoops-text {
     text-transform: uppercase;
+}
+
+.directory-container {
+    margin: 25px 5px 25px 5px;
+    text-align: center;
+}
+
+.sax-container {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    color: cyan;
+}
+
+#add-button {
+    text-align: center;
+    font-size: 20px;
+    background-color: black;
+    color: red;
 }

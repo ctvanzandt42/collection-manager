@@ -46,13 +46,16 @@ app.get("/saxophones", (req, res) => {
         })
 });
 
+app.get("/saxophones/addSax", (req, res) => {
+    res.render('addSax');
+});
 
-
-app.post("/saxophones", (req, res) => {
+app.post("/saxophones/addSax", (req, res) => {
     let newSax = new Saxophones(req.body);
     newSax.save()
         .then(function (savedSaxophone) {
-            res.send(savedSaxophone);
+            res.redirect('/');
+            //res.send(savedSaxophone);
         })
         .catch(function (err) {
             res.status(500).send(err);

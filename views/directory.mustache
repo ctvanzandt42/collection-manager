@@ -5,15 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Saxophones Directory</title>
 </head>
 
 <body>
     {{#saxophones}}
     <div class="directory-container">
-        <div class="sax-container">{{model}}: {{manufacturer}}, {{yearAcquired}}, {{condition}}</div>
+        <p class="sax-container">{{model}}: {{manufacturer}}, {{yearAcquired}}, {{condition}}</p>
+        {{/saxophones}}
+        <button id="add-button" type="button" onclick="window.location='/saxophones/addsax'">Add a Saxophone!</button>
     </div>
-    {{/saxophones}}
 </body>
 
 </html>
