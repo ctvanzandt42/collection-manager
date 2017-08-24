@@ -7,12 +7,13 @@ const bodyParser = require('body-parser');
 const logger = require('morgan');
 const mustacheExpress = require('mustache-express');
 const Saxophones = require('./models/Saxophones');
+const indexRoutes = require('./routes/indexRoutes');
 mongoose.Promise = bluebird;
+
 const app = express();
 const port = process.env.PORT || 8000;
 
 //connecting mongo to the server
-//REQUIRED IMPORTANT *******************************
 mongoose.connect("mongodb://localhost:27017/saxophones");
 
 //setting up server to listen
@@ -24,20 +25,12 @@ app.listen(port, () => {
 app.use(express.static(path.join(__dirname, "./public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger("dev"));
-
-//setting up mustache
 app.engine("mustache", mustacheExpress());
 app.set("views", "./views");
 app.set("view engine", "mustache");
 
 //setting up endpoints
-app.get("/", (req, res) => {
-    res.render('home');
-});
-
-app.get("/whoops", (req, res) => {
-    res.render('whoops');
-});
+app.use('/', indexRoutes);
 
 app.get("/saxophones", (req, res) => {
     Saxophones.find()
@@ -45,13 +38,15 @@ app.get("/saxophones", (req, res) => {
             if (!foundSaxes) {
                 return res.send({ msg: "no saxes found" });
             }
-            // res.send(foundSaxes);
+            //res.send(foundSaxes);
             res.render('directory', { saxophones: foundSaxes })
         })
         .catch((err) => {
             res.status(500).send(err);
         })
 });
+
+
 
 app.post("/saxophones", (req, res) => {
     let newSax = new Saxophones(req.body);
