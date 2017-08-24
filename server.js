@@ -2,9 +2,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bluebird = require('bluebird');
+const path = require('path');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const mustache = require('mustache');
+const mustacheExpress = require('mustache-express');
 const Saxophones = require('./models/Saxophones');
 mongoose.Promise = bluebird;
 const app = express();
@@ -28,6 +29,19 @@ app.use(logger("dev"));
 app.engine("mustache", mustacheExpress());
 app.set("views", "./views");
 app.set("view engine", "mustache");
+
+//setting up endpoints
+app.get("/", (req, res) => {
+    res.render('home');
+});
+
+app.get("/whoops", (req, res) => {
+    res.render('whoops');
+});
+
+app.get("/directory", (req, res) => {
+    res.render('directory');
+});
 
 app.get("/saxophones", (req, res) => {
     Saxophones.find()

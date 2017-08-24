@@ -1,0 +1,52 @@
+body {
+    background-image: url(http://www.imgbase.info/images/safe-wallpapers/miscellaneous/funny/56035_funny_just_do_it_shia_labeouf.jpg);
+    margin: 0 auto;
+}
+
+.home-header {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-picture {
+    height: 50%;
+    width: 50%;
+}
+
+.home-text, .whoops-text {
+    border: 1px solid black;
+    background-color: black;
+    color: cyan;
+    padding: 20px;
+}
+
+.home-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+#home-redirect-button, #home-whoops-button, #whoops-button {
+    font-size: 20px;
+    background-color: black;
+    color: red;
+}
+
+.whoops-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.whoops-picture {
+    height: 50%;
+    width: 50%;
+}
+
+.whoops-text {
+    text-transform: uppercase;
+}
