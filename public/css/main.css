@@ -1,4 +1,4 @@
-* {
+body {
     background-image: url(http://www.imgbase.info/images/safe-wallpapers/miscellaneous/funny/56035_funny_just_do_it_shia_labeouf.jpg);
     margin: 0 auto;
 }
@@ -52,7 +52,6 @@
 }
 
 .directory-container {
-    margin: 25px 5px 25px 5px;
     text-align: center;
 }
 
@@ -68,4 +67,32 @@
     font-size: 20px;
     background-color: black;
     color: red;
+}
+
+.add-form {
+    text-align: center;
+    background-color: black;
+    color: cyan;
+    font-size: 30px;
+    margin-top: 100px;
+}
+
+.add-form input {
+    background-color: cyan;
+    color: black;
+    font-size: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.add-form select {
+    background-color: cyan;
+    color: black;
+    font-size: 30px;
+}
+
+.add-form button {
+    background-color: black;
+    color: red;
+    font-size: 30px;
 }
