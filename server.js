@@ -8,13 +8,13 @@ const logger = require('morgan');
 const mustacheExpress = require('mustache-express');
 const Saxophones = require('./models/Saxophones');
 const indexRoutes = require('./routes/indexRoutes');
-mongoose.Promise = bluebird;
 
 const app = express();
 const port = process.env.PORT || 8000;
 
 //connecting mongo to the server
 mongoose.connect("mongodb://localhost:27017/saxophones");
+mongoose.Promise = bluebird;
 
 //setting up server to listen
 app.listen(port, () => {
@@ -76,26 +76,23 @@ app.get("/saxophones/:id", (req, res) => {
         })
 });
 
-
 app.put("/saxophones/:id", (req, res) => {
     Saxophones.findByIdAndUpdate(req.params.id, req.body)
         .then((updatedSax) => {
             if (!updatedSax) {
-                return res.send({ msg: "could not update sax" });
+                return res.send({ msg: "could not update sax" })
             }
-            // res.send(updatedSax);
-            res.redirect('/saxophones');
+            return res.redirect(`/saxophones`)
         })
-        .catch((err) => {
+        .catch(function (err) {
             res.status(500).send(err);
         })
 });
 
-app.delete("/saxophones/:id", (req, res) => {
+app.get("/saxophones/:id", (req, res) => {
     Saxophones.findByIdAndRemove(req.params.id)
         .then(function (message) {
-            console.log("Message: " + message);
-            res.send(message);
+            res.redirect('/saxophones');
         })
         .catch((err) => {
             res.status(500).send(err);
