@@ -68,12 +68,14 @@ app.get("/saxophones/:id", (req, res) => {
             if (!foundSax) {
                 return res.send({ msg: "no saxes found" });
             }
-            res.send(foundSax);
+            //res.send(foundSax);
+            res.render("foundSax");
         })
         .catch((err) => {
             res.status(500).send(err);
         })
 });
+
 
 app.put("/saxophones/:id", (req, res) => {
     Saxophones.findByIdAndUpdate(req.params.id, req.body)
@@ -81,7 +83,8 @@ app.put("/saxophones/:id", (req, res) => {
             if (!updatedSax) {
                 return res.send({ msg: "could not update sax" });
             }
-            res.send(updatedSax);
+            // res.send(updatedSax);
+            res.redirect('/saxophones');
         })
         .catch((err) => {
             res.status(500).send(err);

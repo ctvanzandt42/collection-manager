@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/main.css">
-    <title>Add a Sax!</title>
+    <title>Document</title>
 </head>
 
 <body>
-    <form action="/saxophones/addone" method="post">
-        <div class="add-form">
+    <form action="/saxophones/{{id}}" method="put">
+        <div class="edit-form">
             <label for="">What year did you get this saxophone?</label>
-            <input type="year" name="yearAcquired" required><br>
+            <input type="year" name="yearAcquired"><br>
             <label for="">What is the manufacturer and model of this saxophone?</label>
-            <input type="text" name="manufacturer" required><br>
+            <input type="text" name="manufacturer"><br>
             <label for="">What type of saxophone is this?</label>
             <select name="model">
             <option value="soprano">Soprano</option>
@@ -35,7 +35,7 @@
             <option value="true">True</option>
             <option value="false">False</option>
         </select><br>
-            <button type="submit">Add that sucker!</button>
+            <button type="submit">Edit that sucker!</button>
         </div>
     </form>
 </body>

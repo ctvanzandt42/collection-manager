@@ -11,11 +11,14 @@
 
 <body>
     {{#saxophones}}
-    <div class="directory-container">
-        <p class="sax-container">{{model}}: {{manufacturer}}, {{yearAcquired}}, {{condition}}</p>
-        {{/saxophones}}
-        <button id="add-button" type="button" onclick="window.location='/saxophones/addone'">Add a Saxophone!</button>
-    </div>
+      <div class="directory-container">
+        <p class="sax-container">{{model}}: {{manufacturer}}, {{yearAcquired}}, {{condition}}, F# Key: {{fSharpKey}}</p>
+        <button class="edit-button" type="button" onclick="window.location='/saxophones/{{id}}'">Edit</button> 
+      </div>
+    {{/saxophones}}
+    <button id="add-button" type="button" onclick="window.location='/saxophones/addone'">Add a Saxophone!</button>
+    <button id="go-home" type="button" onclick="window.location='/'">Go Home!</button>
+
 </body>
 
 </html>
